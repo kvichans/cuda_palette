@@ -90,7 +90,7 @@ def dlg_color_palette(caption, old_color=None, palette_type=None, i18n={}):
                   )
     while True:
         if not cnRGBs:
-            cnRGBs  = [(*int_to_rgb(c)
+            cnRGBs  = [(int_to_rgb(c)
                        , c, s) for (c, s) in COLOR_NAMES.items()]
 
         clrs,       \
@@ -125,7 +125,7 @@ def dlg_color_palette(caption, old_color=None, palette_type=None, i18n={}):
                 cn          = clr if nm else 0
                 if not nm and vw_nrby:
                     d,ma,   \
-                    nm,cn   = min((abs(R-cnR)+abs(G-cnG)+abs(B-cnB), max(abs(R-cnR),abs(G-cnG),abs(B-cnB)), sn, c) for (cnR, cnG, cnB, c, sn) in cnRGBs)
+                    nm,cn   = min((abs(R-cnR)+abs(G-cnG)+abs(B-cnB), max(abs(R-cnR),abs(G-cnG),abs(B-cnB)), sn, c) for ((cnR, cnG, cnB), c, sn) in cnRGBs)
                     sure    = '!'   if ma<=3 else \
                               '.'   if ma<=9 else \
                               '..'
@@ -201,7 +201,7 @@ def dlg_color_palette(caption, old_color=None, palette_type=None, i18n={}):
                 sure        = ''
                 if not nm and vw_nrby:
                     d,ma,   \
-                    nm,cn   = min((abs(R-cnR)+abs(G-cnG)+abs(B-cnB), max(abs(R-cnR),abs(G-cnG),abs(B-cnB)), sn, c) for (cnR, cnG, cnB, c, sn) in cnRGBs)
+                    nm,cn   = min((abs(R-cnR)+abs(G-cnG)+abs(B-cnB), max(abs(R-cnR),abs(G-cnG),abs(B-cnB)), sn, c) for ((cnR, cnG, cnB), c, sn) in cnRGBs)
                     sure    = '!'   if ma<=3 else \
                               '.'   if ma<=9 else \
                               '..'
